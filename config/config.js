@@ -1,4 +1,4 @@
-
+//requiere .env con los campos necesarios
 const config = {
     db: {
       host: process.env.host,
