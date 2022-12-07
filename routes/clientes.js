@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const clientes = require('../services/clientes');
 
-// GET obtener lista de productos 
+// GET obtener una lista de todos los Clientes 
 router.get('/', async function(req, res, next) {
   try {
     res.json(await clientes.getClientes(req.query.page));
@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-// POST nuevo producto
+// POST crear nuevo Cliente
 router.post('/', async function(req, res, next) {
     try {
       res.json(await clientes.createCliente(req.body));
@@ -22,7 +22,7 @@ router.post('/', async function(req, res, next) {
     }
   });
 
-// PUT actualizar producto 
+// PUT actualizar todos los datos de un Cliente por id
 router.put('/:id', async function(req, res, next) {
     try {
       res.json(await clientes.updateCliente(req.params.id, req.body));
@@ -32,7 +32,7 @@ router.put('/:id', async function(req, res, next) {
     }
 });
 
-// DELETE borrar producto 
+// DELETE borra un Cliente de la base de datos 
 router.delete('/:id', async function(req, res, next) {
   try {
     res.json(await clientes.deleteCliente(req.params.id));

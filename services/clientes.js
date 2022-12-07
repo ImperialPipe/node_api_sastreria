@@ -1,9 +1,11 @@
 const db = require('./db');
 const helper = require('../helper');
 
+
+//ejecuta un select from clientes
 async function getClientes(page = 1){
   const rows = await db.query(
-    `SELECT ID,NOMBRES,APELLIDOS,EMAIL,CONTRASEÑA,TELEFONO,FRACCIONAMIENTO,NUMERO_CASA,CP,CALLE FROM CLIENTES `
+    `SELECT * FROM CLIENTES `
   );
   const data = helper.emptyOrRows(rows);
   const meta = {page};
@@ -13,6 +15,8 @@ async function getClientes(page = 1){
     meta
   }
 }
+
+//crea un nuevo cliente
 async function createCliente(cliente){
     const result = await db.query(
       `INSERT INTO CLIENTES(NOMBRES,APELLIDOS,EMAIL,CONTRASEÑA,TELEFONO,FRACCIONAMIENTO,NUMERO_CASA,CP,CALLE)
@@ -28,6 +32,8 @@ async function createCliente(cliente){
   
     return {message};
 }
+
+//actualiza todos los datos de un cliente por id
 async function updateCliente(id, cliente){
     const result = await db.query(
       `UPDATE CLIENTES SET 
@@ -46,6 +52,7 @@ async function updateCliente(id, cliente){
     return {message};
 }
 
+//Ejecuta query delete por id
 async function deleteCliente(id){
     const result = await db.query(
       `DELETE FROM CLIENTES WHERE id=${id}`
