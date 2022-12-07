@@ -21,7 +21,7 @@ async function createCliente(cliente){
     const result = await db.query(
       `INSERT INTO CLIENTES(NOMBRES,APELLIDOS,EMAIL,CONTRASEÑA,TELEFONO,FRACCIONAMIENTO,NUMERO_CASA,CP,CALLE)
       values
-      ("${cliente.nombres}","${cliente.apellidos}","${cliente.email}","${cliente.contraseña}",${cliente.telefono},"${cliente.fraccionamiento}",${cliente.numero_casa},${cliente.cp},"${cliente.calle}")`
+      ("${cliente.nombres}","${cliente.apellidos}","${cliente.email}","${cliente.contraseña}","${cliente.telefono}","${cliente.fraccionamiento}",${cliente.numero_casa},${cliente.cp},"${cliente.calle}")`
     );
   
     let message = 'Error al crear Usuario';
@@ -38,7 +38,7 @@ async function updateCliente(id, cliente){
     const result = await db.query(
       `UPDATE CLIENTES SET 
       NOMBRES="${cliente.nombres}",APELLIDOS="${cliente.apellidos}",EMAIL="${cliente.email}",
-      CONTRASEÑA="${cliente.contraseña}",TELEFONO=${cliente.telefono},FRACCIONAMIENTO="${cliente.fraccionamiento}",
+      CONTRASEÑA="${cliente.contraseña}",TELEFONO="${cliente.telefono}",FRACCIONAMIENTO="${cliente.fraccionamiento}",
       NUMERO_CASA=${cliente.numero_casa},CP=${cliente.cp},CALLE="${cliente.calle}"
       WHERE id=${id}` 
     );
