@@ -10,11 +10,14 @@ app.use(
     extended: true,
   })
 );
+
+//Root de la aplicación
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
 
 // Routers
+// Ejemplo de enlace http://localhost:3000/clientes
 app.use("/clientes", clientesRouter);
 
 

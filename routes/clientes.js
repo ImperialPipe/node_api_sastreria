@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const clientes = require('../services/clientes');
 
+// Los archivos en routes usan las funciones de los archivos en services para redireccionar
+
 // GET obtener una lista de todos los Clientes 
 router.get('/', async function(req, res, next) {
   try {
@@ -12,7 +14,7 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-// POST crear nuevo Cliente
+// POST para nuevo Cliente
 router.post('/', async function(req, res, next) {
     try {
       res.json(await clientes.createCliente(req.body));
@@ -22,7 +24,7 @@ router.post('/', async function(req, res, next) {
     }
   });
 
-// PUT actualizar todos los datos de un Cliente por id
+// Actualiza un cliente basado en un id si se envia como PUT
 router.put('/:id', async function(req, res, next) {
     try {
       res.json(await clientes.updateCliente(req.params.id, req.body));
@@ -32,7 +34,7 @@ router.put('/:id', async function(req, res, next) {
     }
 });
 
-// DELETE borra un Cliente de la base de datos 
+// Borra un cliente basado en un id si se envia como DELETE 
 router.delete('/:id', async function(req, res, next) {
   try {
     res.json(await clientes.deleteCliente(req.params.id));

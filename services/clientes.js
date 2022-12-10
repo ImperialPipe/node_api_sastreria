@@ -1,6 +1,7 @@
 const db = require('./db');
 const helper = require('../helper');
 
+// Los archivos en services manejan la logica y funciones para los archivos en routes
 
 //ejecuta un select from clientes
 async function getClientes(page = 1){
